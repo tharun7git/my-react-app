@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/your-repo.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'  // For Maven
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './deploy.sh'  // Custom deployment script
+            }
+        }
+    }
+}
